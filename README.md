@@ -1,2 +1,2 @@
-# wee-4-game
-Star Wars fans
+# Assignment for Week 4
+Lego Fans! Assesmble! 
