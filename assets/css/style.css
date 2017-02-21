@@ -1,0 +1,30 @@
+body {
+	margin: 30px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	color: white;
+	text-align: right;
+	background-color: transparent;
+	margin-top: 0;
+}
+
+h2 {
+	border-width: 5px;
+	border-color: white;
+	color: white;
+	text-align: left;
+}
+
+.btn {
+	background: pink;
+}
+
+img {
+	width: 220px;
+	height: 220px;
+	float: left;
+}
+
