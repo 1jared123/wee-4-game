@@ -5,11 +5,6 @@ $(document).ready(function() {
 var gameState = {
 	yourCharacter: "",
 	enemyCharacters: "",
-	defenderCharacter: "",
-	damageTaken: 0,
-	damageGiven: 0,
-	healthPoints: 0,
-
 }
 
 
@@ -52,6 +47,7 @@ function ironManPreBattle() {
 		$(".enemyCharacters").append($(".LegoThor"));
 		$(".enemyCharacters").append($(".LegoHulk"));
 		gameState.yourCharacter = ironMan;
+		ironMan = ironMan.toString();
 		console.log(gameState);
 
 		chooseDefender();
