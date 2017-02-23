@@ -10,24 +10,28 @@ var gameState = {
 
 // define each character, base dmg and hp. 
 var ironMan = {
+	name: "Iron Man",
 	hasBeenClicked: false,
 	healthPoints: 120,
 	attackDamage: 2,
 }
 
 var captainAmerica = {
+	name: "Captain America",
 	hasBeenClicked: false,
 	healthPoints: 5000,
 	attackDamage: 500,
 }
 
 var thors = {
+	name: "Thor",
 	hasBeenClicked: false,
 	healthPoints: 6000,
 	attackDamage: 600,
 }
 
 var hulkSmash = {
+	name: "Hulk",
 	hasBeenClicked: false,
 	healthPoints: 9000,
 	attackDamage: 900,
@@ -47,7 +51,6 @@ function ironManPreBattle() {
 		$(".enemyCharacters").append($(".LegoThor"));
 		$(".enemyCharacters").append($(".LegoHulk"));
 		gameState.yourCharacter = ironMan;
-		ironMan = ironMan.toString();
 		console.log(gameState);
 
 		chooseDefender();
@@ -120,7 +123,6 @@ function ironMansBattle() {
 				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + captainAmerica.attackDamage + "</p>");
 			} else if (captainAmerica.healthPoints <= 0) {
 				battleWinner();
-				$(".results").html("You beat the Captain! Choose another character too attack.");
 			} else if (ironMan.healthPoints <= 0) {
 				gameOver();
 				$(".LegoIronMan").hide();
@@ -139,7 +141,6 @@ function ironMansBattle() {
 				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + thors.attackDamage + "</p>");
 			} else if (thors.healthPoints <= 0) {
 				battleWinner();
-				$(".results").html("You beat Thor! Choose another character too attack.");
 			} else if (ironMan.healthPoints <= 0) {
 				gameOver();
 				$(".LegoIronMan").hide();
@@ -158,7 +159,6 @@ function ironMansBattle() {
 				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + hulkSmash.attackDamage + "</p>");
 			} else if (hulkSmash.healthPoints <= 0) {
 				battleWinner();
-				$(".results").html("You beat Hulk! Choose another character too attack.");
 			} else if (ironMan.healthPoints <= 0) {
 				gameOver();
 				$(".LegoIronMan").hide();
@@ -174,6 +174,8 @@ function ironMansBattle() {
 function battleWinner() {
 	$(".defendant").empty();
 	console.log(gameState);
+	$(".results").html("You beat " + gameState.enemyCharacters.name + " Choose another character too attack.");
+
 	// selectAnother();
 }
 
@@ -186,7 +188,7 @@ function selectAnother() {
 
 // restart button for after you win/lose. 
 	function gameOver() {
-		$("#gameIsOver").html("<h2>Game Over! You Dead! Press the button to restart!" +"<br> " + "<div class='btn-group' role='group' aria-label='...'>" + 
+		$("#gameIsOver").html("<h2>Game Over! You Dead! " + gameState.enemyCharacters.name + " beat you! Press the button to restart!" +"<br> " + "<div class='btn-group' role='group' aria-label='...'>" + 
             "<button type='button' class='btn btn-default reset'>Restart</button>" + 
           "</div> </br> </h2>");
 		$(".results").empty();
