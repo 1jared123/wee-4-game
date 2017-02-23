@@ -15,146 +15,189 @@ var gameState = {
 
 // define each character, base dmg and hp. 
 var ironMan = {
+	hasBeenClicked: false,
 	healthPoints: 120,
-	attackDamage: 8,
+	attackDamage: 2,
 }
 
 var captainAmerica = {
-	healthPoints: 100,
-	attackDamage: 5,
+	hasBeenClicked: false,
+	healthPoints: 5000,
+	attackDamage: 500,
 }
 
-var thorsHammer = {
-	healthPoints: 150,
-	attackDamage: 20,
+var thors = {
+	hasBeenClicked: false,
+	healthPoints: 6000,
+	attackDamage: 600,
 }
 
 var hulkSmash = {
-	healthPoints: 100,
-	attackDamage: 25,
+	hasBeenClicked: false,
+	healthPoints: 9000,
+	attackDamage: 900,
 }
 
 
-// function ironnMan() {
-
-// }
-//create on click function to move characters after someone selects first target. 
 	
-// $(".LegoIronMan").on("click", function() {
+ironManPreBattle();
 
-// 	$(".chosenCharacter").append($(".LegoIronMan"));
-// 	$(".enemyCharacters").append($(".LegoCaptainAmerica"));
-// 	$(".enemyCharacters").append($(".LegoThor"));
-// 	$(".enemyCharacters").append($(".LegoHulk"));
-// 	gameState.yourCharacter = "ironMan";
-// 	gameState.enemyCharacters = "thorsHammer";
-// 	console.log("I think somethings up...");
-// })
-// $(".LegoCaptainAmerica").click(function() {
-// 	$(".chosenCharacter").append($(".LegoCaptainAmerica"));
-// 	$(".enemyCharacters").append($(".LegoIronMan"));
-// 	$(".enemyCharacters").append($(".LegoThor"));
-// 	$(".enemyCharacters").append($(".LegoHulk"));
-// 	gameState.yourCharacter.push(captainAmerica);
-// 	gameState.enemyCharacters.push(ironMan, thorsHammer, hulkSmash);
-// });
-// $(".LegoThor").click(function() {
-// 	$(".chosenCharacter").append($(".LegoThor"));
-// 	$(".enemyCharacters").append($(".LegoIronMan"));
-// 	$(".enemyCharacters").append($(".LegoCaptainAmerica"));
-// 	$(".enemyCharacters").append($(".LegoHulk"));
-// 	gameState.yourCharacter.push(thorsHammer);
-// 	gameState.enemyCharacters.push(ironMan, captainAmerica, hulkSmash);
-// });
-// $(".LegoHulk").click(function() {
-// 	$(".chosenCharacter").append($(".LegoHulk"));
-// 	$(".enemyCharacters").append($(".LegoIronMan"));
-// 	$(".enemyCharacters").append($(".LegoCaptainAmerica"));
-// 	$(".enemyCharacters").append($(".LegoThor"));
-// 	gameState.yourCharacter.push(hulkSmash);
-// 	gameState.enemyCharacters.push(ironMan, captainAmerica, thorsHammer);
-// });
+function ironManPreBattle() {
 
+		$(".LegoIronMan").on("click", function() {
+		ironMan.hasBeenClicked = true;
+	
+		$(".chosenCharacter").append($(".LegoIronMan"));
+		$(".enemyCharacters").append($(".LegoCaptainMerica"));
+		$(".enemyCharacters").append($(".LegoThor"));
+		$(".enemyCharacters").append($(".LegoHulk"));
+		gameState.yourCharacter = ironMan;
+		console.log(gameState);
 
+		chooseDefender();
+
+		});
+
+};
+
+function chooseDefender() {
+	//create on click function to move characters after someone selects first target. 
+
+	$(".LegoCaptainMerica").on("click", function() {
+		captainAmerica.hasBeenClicked = true;
+
+		if (captainAmerica.hasBeenClicked) {
+			gameState.enemyCharacters = captainAmerica;
+			$(".defendant").append($(".LegoCaptainMerica"));
+			ironMansBattle();
+			console.log("Can't we all just settle this over a drink?");
+			console.log(gameState);
+		}
+	});
 
 
+	$(".LegoThor").on("click", function() {
+	thors.hasBeenClicked = true;
 
-	// Create function for attacking. 
+		if (thors.hasBeenClicked) {
+			gameState.enemyCharacters = thors;
+			$(".defendant").append($(".LegoThor"));
+			ironMansBattle();
+			console.log("Where's my hammer?!?!?!");
+			console.log(gameState);
+		}
 
-	function battleArena() {
-
-	if  
-
-		($(".LegoIronMan").on("click", function() {
-			$(".chosenCharacter").append($(".LegoIronMan"));
-			$(".enemyCharacters").append($(".LegoCaptainAmerica"));
-			$(".enemyCharacters").append($(".LegoThor"));
-			$(".enemyCharacters").append($(".LegoHulk"));
-			gameState.yourCharacter = ironMan;
-			gameState.enemyCharacters = captainAmerica, thorsHammer, hulkSmash;
-			console.log("I think somethings up...");
-		}))
-	{
+	});
+	
 
 
+	$(".LegoHulk").on("click", function() {
+		hulkSmash.hasBeenClicked = true;
 
-		if (gameState.yourCharacter = ironMan) {
-
-			$(".LegoThor").on("click", function () {
-				$(".defendant").append($("LegoThor"));
-				console.log("Where's my hammer?!?!?!");
-			});
-
-			$(".LegoCaptainAmerica").on("click", function () {
-				$(".defendant").append($("LegoCaptainAmerica"));
-				console.log("Can't we all just settle this over a drink?");
-			});
-
-			$(".LegoHulk").on("click", function () {
-				$(".defendant").append($("LegoHulk"));
-				console.log("HULK SMASH!!");
-			});
- 
-			if (gameState.enemyCharacters = captainAmerica) {
-				// console.log("IT STILL WORKING!!!!");
+		if (hulkSmash.hasBeenClicked) {
+			gameState.enemyCharacters = hulkSmash;
+			$(".defendant").append($(".LegoHulk"));
+			ironMansBattle();
+			console.log("HULK SMASH!!");
+			console.log(gameState);
+		}
+	});	
+	
+};	
 
 
-				// function for attack button. Make button look cooler. 
 
-				$(".attack").on("click", function() {
 
-					if (ironMan.healthPoints > 0) {
-						captainAmerica.healthPoints -= ironMan.attackDamage;
-						ironMan.healthPoints -= captainAmerica.attackDamage;
-						ironMan.attackDamage += 8;
-						$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>Your defender attacked you for " + captainAmerica.attackDamage + "</p>");
-					} else if (captainAmerica.healthPoints <= 0) {
-						$(".results").html("You beat Captain America! Choose another character too attack.");
 
-					} else if (ironMan.healthPoints <= 0) {
-						gameOver();
-					}
-					
+// Create function for attacking. in this case, just Iron Man is attacking.
+function ironMansBattle() {
 
-				});
-			};
-		};
+	if (gameState.enemyCharacters = captainAmerica) {
 
+		// function for attack button. Make button look cooler. Which is done in HTML...
+		$(".attack").on("click", function() {
+
+			if (ironMan.healthPoints > 0) {
+				captainAmerica.healthPoints -= ironMan.attackDamage;
+				ironMan.healthPoints -= captainAmerica.attackDamage;
+				ironMan.attackDamage += 8;
+				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + captainAmerica.attackDamage + "</p>");
+			} else if (captainAmerica.healthPoints <= 0) {
+				battleWinner();
+				$(".results").html("You beat the Captain! Choose another character too attack.");
+			} else if (ironMan.healthPoints <= 0) {
+				gameOver();
+				$(".LegoIronMan").hide();
+			}
+		});
 	}
 
+	else if (gameState.enemyCharacters = thors) {
+
+		$(".attack").on("click", function() {
+
+			if (ironMan.healthPoints > 0) {
+				thors.healthPoints -= ironMan.attackDamage;
+				ironMan.healthPoints -= thors.attackDamage;
+				ironMan.attackDamage += 8;
+				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + thors.attackDamage + "</p>");
+			} else if (thors.healthPoints <= 0) {
+				battleWinner();
+				$(".results").html("You beat Thor! Choose another character too attack.");
+			} else if (ironMan.healthPoints <= 0) {
+				gameOver();
+				$(".LegoIronMan").hide();
+			}					
+		});
+	}
+
+	else if (gameState.enemyCharacters = hulkSmash) {
+
+		$(".attack").on("click", function() {
+
+			if (ironMan.healthPoints > 0) {
+				hulkSmash.healthPoints -= ironMan.attackDamage;
+				ironMan.healthPoints -= hulkSmash.attackDamage;
+				ironMan.attackDamage += 8;
+				$(".results").html("<p>You attacked for " + ironMan.attackDamage + "</p>" + "<p>The defender attacked you for " + hulkSmash.attackDamage + "</p>");
+			} else if (hulkSmash.healthPoints <= 0) {
+				battleWinner();
+				$(".results").html("You beat Hulk! Choose another character too attack.");
+			} else if (ironMan.healthPoints <= 0) {
+				gameOver();
+				$(".LegoIronMan").hide();
+			}
+		});
 	};
+	
+}
 
 
-battleArena();
+
+// function to run if you beat the other player
+function battleWinner() {
+	$(".defendant").empty();
+	console.log(gameState);
+	// selectAnother();
+}
+
+
+// function to select another enemy after the battle is won. 
+function selectAnother() {
+
+}
+
 
 // restart button for after you win/lose. 
 	function gameOver() {
-		$("#gameIsOver").html("<h2>Game Over! Press the button to restart!" +"<br> " + "<div class='btn-group' role='group' aria-label='...'>" + 
+		$("#gameIsOver").html("<h2>Game Over! You Dead! Press the button to restart!" +"<br> " + "<div class='btn-group' role='group' aria-label='...'>" + 
             "<button type='button' class='btn btn-default reset'>Restart</button>" + 
           "</div> </br> </h2>");
+		$(".results").empty();
 		$(".reset").on("click", function() {
 			location.reload();
 		});
+		console.log(gameState);
 	}
 
 })
