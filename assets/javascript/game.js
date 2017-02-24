@@ -12,29 +12,29 @@ var gameState = {
 var ironMan = {
 	name: "Iron Man",
 	hasBeenClicked: false,
-	healthPoints: 120,
-	attackDamage: 2,
+	healthPoints: 600,
+	attackDamage: 4000,
 }
 
 var captainAmerica = {
 	name: "Captain America",
 	hasBeenClicked: false,
-	healthPoints: 5000,
-	attackDamage: 500,
+	healthPoints: 500,
+	attackDamage: 100,
 }
 
 var thors = {
 	name: "Thor",
 	hasBeenClicked: false,
-	healthPoints: 6000,
-	attackDamage: 600,
+	healthPoints: 600,
+	attackDamage: 100,
 }
 
 var hulkSmash = {
 	name: "Hulk",
 	hasBeenClicked: false,
-	healthPoints: 9000,
-	attackDamage: 900,
+	healthPoints: 900,
+	attackDamage: 100,
 }
 
 
@@ -53,55 +53,59 @@ function ironManPreBattle() {
 		gameState.yourCharacter = ironMan;
 		console.log(gameState);
 
-		chooseDefender();
+		clickOnHero();
 
 		});
 
 };
 
-function chooseDefender() {
-	//create on click function to move characters after someone selects first target. 
+function clickOnHero() {
 
 	$(".LegoCaptainMerica").on("click", function() {
 		captainAmerica.hasBeenClicked = true;
-
-		if (captainAmerica.hasBeenClicked) {
-			gameState.enemyCharacters = captainAmerica;
-			$(".defendant").append($(".LegoCaptainMerica"));
-			ironMansBattle();
-			console.log("Can't we all just settle this over a drink?");
-			console.log(gameState);
-		}
-	});
-
+		chooseDefender();
+	})
 
 	$(".LegoThor").on("click", function() {
-	thors.hasBeenClicked = true;
-
-		if (thors.hasBeenClicked) {
-			gameState.enemyCharacters = thors;
-			$(".defendant").append($(".LegoThor"));
-			ironMansBattle();
-			console.log("Where's my hammer?!?!?!");
-			console.log(gameState);
-		}
-
-	});
-	
-
+		thors.hasBeenClicked = true;
+		chooseDefender();
+	})
 
 	$(".LegoHulk").on("click", function() {
 		hulkSmash.hasBeenClicked = true;
+		chooseDefender();
+	})
 
-		if (hulkSmash.hasBeenClicked) {
-			gameState.enemyCharacters = hulkSmash;
-			$(".defendant").append($(".LegoHulk"));
-			ironMansBattle();
-			console.log("HULK SMASH!!");
-			console.log(gameState);
-		}
-	});	
+}
+
+function chooseDefender() {
+	//create on click function to move characters after someone selects first target. 
+
 	
+
+	if (captainAmerica.hasBeenClicked) {
+		gameState.enemyCharacters = captainAmerica;
+		$(".defendant").append($(".LegoCaptainMerica"));
+		ironMansBattle();
+		console.log("Can't we all just settle this over a drink?");
+		console.log(gameState);
+	}
+
+	if (thors.hasBeenClicked) {
+		gameState.enemyCharacters = thors;
+		$(".defendant").append($(".LegoThor"));
+		ironMansBattle();
+		console.log("Where's my hammer?!?!?!");
+		console.log(gameState);
+	}
+
+	if (hulkSmash.hasBeenClicked) {	
+		gameState.enemyCharacters = hulkSmash;
+		$(".defendant").append($(".LegoHulk"));
+		ironMansBattle();
+		console.log("HULK SMASH!!");
+		console.log(gameState);
+	}
 };	
 
 
@@ -111,7 +115,7 @@ function chooseDefender() {
 // Create function for attacking. in this case, just Iron Man is attacking.
 function ironMansBattle() {
 
-	if (gameState.enemyCharacters = captainAmerica) {
+	if (gameState.enemyCharacters === captainAmerica) {
 
 		// function for attack button. Make button look cooler. Which is done in HTML...
 		$(".attack").on("click", function() {
@@ -130,7 +134,7 @@ function ironMansBattle() {
 		});
 	}
 
-	else if (gameState.enemyCharacters = thors) {
+	else if (gameState.enemyCharacters === thors) {
 
 		$(".attack").on("click", function() {
 
@@ -148,7 +152,7 @@ function ironMansBattle() {
 		});
 	}
 
-	else if (gameState.enemyCharacters = hulkSmash) {
+	else if (gameState.enemyCharacters === hulkSmash) {
 
 		$(".attack").on("click", function() {
 
